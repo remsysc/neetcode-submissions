@@ -1,0 +1,21 @@
+class Solution {
+  /**
+   * @param {number[]} heights
+   * @return {number}
+   */
+  maxArea(heights) {
+    let left = 0;
+    let right = heights.length - 1;
+    let result = 0;
+
+    while (left < right) {
+      const area =
+        Math.abs(left - right) * Math.min(heights[left], heights[right]); //width * length
+      result = Math.max(result, area);
+
+      if (heights[left] < result) left++;
+      else right--;
+    }
+    return result;
+  }
+}
